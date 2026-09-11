@@ -1,0 +1,16 @@
+{
+  "name": "codes-de-parrainage",
+  "version": "1.0.0",
+  "description": "Site statique de partage de codes de parrainage, une page par application.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.js",
+    "serve": "node src/build.js && node src/serve.js",
+    "check": "node src/build.js --check"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

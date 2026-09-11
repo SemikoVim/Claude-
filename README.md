@@ -1,0 +1,69 @@
+# Mes codes de parrainage
+
+Site statique, en français, pour partager publiquement les codes de parrainage des applications et services que j'utilise. Chaque application a sa propre page qui présente le code, les avantages pour le filleul et la marche à suivre.
+
+Aucune dépendance à installer : seul [Node.js](https://nodejs.org) (version 18 ou plus) est nécessaire.
+
+## Démarrage rapide
+
+```bash
+npm run build   # génère le site dans dist/
+npm run serve   # génère puis prévisualise sur http://localhost:8080/
+npm run check   # valide uniquement les fichiers d'applications
+```
+
+## Ajouter une application
+
+C'est le seul travail à faire pour créer une nouvelle page : **un fichier JSON par application** dans le dossier `apps/`.
+
+1. Copiez `apps/_modele.json.exemple` vers `apps/<slug>.json` (par exemple `apps/revolut.json`).
+2. Remplissez les champs. Le `slug` doit être identique au nom du fichier, en minuscules, chiffres et tirets uniquement : il devient l'adresse de la page (`/revolut/`).
+3. Lancez `npm run check` pour vérifier le fichier, puis `npm run build`.
+
+La page d'accueil liste automatiquement toutes les applications, classées par ordre alphabétique, et chaque page renvoie vers les autres.
+
+### Champs d'un fichier d'application
+
+| Champ | Obligatoire | Description |
+|---|---|---|
+| `slug` | oui | Identifiant de la page, identique au nom du fichier. |
+| `nom` | oui | Nom affiché de l'application. |
+| `categorie` | oui | Catégorie courte (Banque en ligne, Streaming, Mobilité...). |
+| `siteWeb` | oui | Adresse du site officiel. |
+| `code` | oui | Le code de parrainage. |
+| `avantagesFilleul` | oui | Liste des avantages pour la personne qui utilise le code. Le premier sert de résumé sur l'accueil. |
+| `etapes` | oui | Liste ordonnée des étapes pour utiliser le code. |
+| `description` | non | Présentation du service. |
+| `avantagesParrain` | non | Ce que le parrain reçoit. Liste vide pour masquer la section. |
+| `conditions` | non | Conditions, restrictions ou remarques. |
+| `lienParrainage` | non | Lien de parrainage direct, si le service en fournit un. |
+| `emoji` | non | Icône affichée (par défaut 🎁). |
+| `couleur` | non | Couleur d'accent de la page, au format hexadécimal. |
+| `misAJour` | non | Date de dernière vérification, au format `AAAA-MM-JJ`. |
+
+## Personnaliser le site
+
+Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`.
+
+- `assets/style.css` : apparence (thèmes clair et sombre automatiques).
+- `assets/script.js` : bouton « Copier le code ».
+- `src/templates.js` : structure HTML des pages.
+- `src/build.js` : génération et validation.
+
+## Publication
+
+Le site est prêt pour [GitHub Pages](https://pages.github.com/) : le workflow `.github/workflows/deploy.yml` génère et publie `dist/` à chaque push sur `main`. Pour l'activer, allez dans **Settings → Pages** du dépôt et choisissez **GitHub Actions** comme source.
+
+Le dossier `dist/` généré est un site statique classique : il peut aussi être hébergé sur Netlify, Vercel, Cloudflare Pages ou n'importe quel hébergeur de fichiers.
+
+## Structure du projet
+
+```
+apps/                  un fichier JSON par application (la seule chose à éditer au quotidien)
+assets/                feuille de style et script copiés tels quels dans dist/assets/
+src/build.js           génère dist/ à partir de apps/ et site.config.json
+src/templates.js       gabarits HTML (accueil, page application, page 404)
+src/serve.js           serveur local de prévisualisation
+site.config.json       titre, slogan, introduction du site
+.github/workflows/     vérification des JSON et déploiement GitHub Pages
+```

@@ -1,0 +1,32 @@
+{
+  "slug": "fortuneo",
+  "nom": "Fortuneo",
+  "categorie": "Banque en ligne",
+  "emoji": "🏦",
+  "couleur": "#0f6e56",
+  "siteWeb": "https://www.fortuneo.fr",
+  "description": "Fortuneo est une banque en ligne française (groupe Crédit Mutuel Arkéa) qui propose un compte courant sans frais de tenue de compte, des cartes bancaires gratuites sous conditions de revenus ou d'utilisation, ainsi qu'une offre d'épargne, de bourse et d'assurance-vie.",
+  "code": "12943425",
+  "lienParrainage": null,
+  "avantagesFilleul": [
+    "Une prime de bienvenue versée sur votre nouveau compte après l'ouverture avec le code de parrainage (montant selon l'offre en cours).",
+    "Les avantages habituels de Fortuneo : pas de frais de tenue de compte, carte bancaire gratuite sous conditions, paiements et retraits gratuits en zone euro.",
+    "Ouverture de compte 100 % en ligne, en quelques minutes."
+  ],
+  "avantagesParrain": [
+    "Une prime de parrainage versée au parrain une fois le compte du filleul ouvert et les conditions remplies."
+  ],
+  "etapes": [
+    "Rendez-vous sur fortuneo.fr et lancez l'ouverture d'un compte bancaire (compte courant avec carte).",
+    "Au cours du formulaire d'inscription, une question vous demande si vous avez été parrainé : répondez « oui ».",
+    "Saisissez le code de parrainage 12943425 dans le champ prévu à cet effet.",
+    "Terminez l'ouverture du compte (pièces justificatives, signature électronique, premier versement).",
+    "La prime est versée automatiquement une fois les conditions de l'offre remplies."
+  ],
+  "conditions": [
+    "L'offre de parrainage est réservée aux nouveaux clients Fortuneo, majeurs et résidant en France.",
+    "Le code doit être saisi au moment de la demande d'ouverture : il ne peut pas être ajouté après coup.",
+    "Le montant et les conditions de la prime peuvent évoluer. Les conditions en vigueur sont celles publiées sur le site officiel de Fortuneo au moment de la souscription."
+  ],
+  "misAJour": "2026-09-11"
+}

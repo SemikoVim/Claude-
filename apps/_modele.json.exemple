@@ -1,0 +1,26 @@
+{
+  "slug": "nom-de-l-application",
+  "nom": "Nom de l'application",
+  "categorie": "Catégorie (ex. Banque en ligne, Streaming, Mobilité...)",
+  "emoji": "🎁",
+  "couleur": "#4f46e5",
+  "siteWeb": "https://www.exemple.fr",
+  "description": "Une ou deux phrases pour présenter le service.",
+  "code": "VOTRE-CODE",
+  "lienParrainage": null,
+  "avantagesFilleul": [
+    "Premier avantage pour la personne qui utilise le code (affiché aussi sur la carte de l'accueil).",
+    "Deuxième avantage."
+  ],
+  "avantagesParrain": [
+    "Ce que vous recevez en tant que parrain (facultatif, liste vide pour ne rien afficher)."
+  ],
+  "etapes": [
+    "Première étape pour utiliser le code.",
+    "Deuxième étape."
+  ],
+  "conditions": [
+    "Conditions ou remarques utiles (facultatif)."
+  ],
+  "misAJour": "2026-01-01"
+}
