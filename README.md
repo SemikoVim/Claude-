@@ -44,7 +44,9 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 | `logo` | non | Nom d'un fichier SVG dans `assets/logos/`. Par défaut, le fichier `assets/logos/<slug>.svg` est utilisé s'il existe. |
 | `emoji` | non | Icône de secours quand aucun logo n'est disponible (par défaut 🎁). |
 | `couleur` | non | Couleur d'accent de la page, au format hexadécimal. |
-| `misAJour` | non | Date de dernière vérification, au format `AAAA-MM-JJ`. |
+| `accroche` | non | Bénéfice en quelques mots (« prime de bienvenue à l'ouverture »), repris dans le titre de la page pour les moteurs de recherche et sous le titre principal. |
+| `faq` | non | Liste de `{ "question": "...", "reponse": "..." }` affichée en bas de page et transmise aux moteurs de recherche (données structurées FAQPage). |
+| `misAJour` | non | Date de dernière vérification, au format `AAAA-MM-JJ`. Sert aussi de date de modification dans le sitemap. |
 
 ### Logos
 
@@ -61,6 +63,10 @@ Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient 
 - `src/templates.js` : structure HTML des pages.
 - `src/build.js` : génération et validation.
 - `src/qr.js` : QR codes en SVG (s'appuie sur `src/vendor/qrcode.js`, bibliothèque MIT vendue telle quelle).
+
+## Référencement
+
+Le build génère `sitemap.xml` et `robots.txt` (si `urlBase` est renseigné), des balises `title`, `description`, `canonical` et Open Graph par page, et des données structurées schema.org : `WebSite` sur l'accueil, `BreadcrumbList`, `HowTo` (les étapes) et `FAQPage` (le champ `faq`) sur chaque application. Après une mise en ligne, soumettez le sitemap dans Google Search Console et Bing Webmaster Tools.
 
 ## Publication
 

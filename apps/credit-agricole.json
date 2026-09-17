@@ -5,6 +5,7 @@
   "emoji": "🏛️",
   "couleur": "#0f7a5c",
   "siteWeb": "https://www.credit-agricole.fr/",
+  "accroche": "prime de bienvenue",
   "description": "Le Crédit Agricole est une banque de proximité organisée en caisses régionales, avec des agences partout en France, une application mobile complète et une offre allant du compte courant à l'épargne, au crédit et à l'assurance.",
   "code": "9N9KDC6",
   "lienParrainage": "https://www.credit-agricole.fr/ca-pyrenees-gascogne/particulier/campagnes/parrainage.html?code-parrainage=9N9KDC6&offre=parrainagenatio",
@@ -30,6 +31,20 @@
     "Le Crédit Agricole est organisé en caisses régionales : le lien pointe vers la caisse Pyrénées Gascogne, mais l'offre de parrainage nationale est en principe valable dans toutes. Confirmez-le auprès de la caisse dans laquelle vous ouvrez votre compte.",
     "Réservé aux nouveaux clients, majeurs, n'ayant pas de compte au Crédit Agricole.",
     "Le montant de la prime et les conditions sont ceux publiés sur le site du Crédit Agricole au moment de l'ouverture."
+  ],
+  "faq": [
+    {
+      "question": "Le code de parrainage fonctionne-t-il dans toutes les caisses régionales du Crédit Agricole ?",
+      "reponse": "L'offre de parrainage nationale est en principe valable dans toutes les caisses régionales, mais chaque caisse peut appliquer ses propres modalités. Confirmez-le avec la caisse dans laquelle vous ouvrez votre compte en indiquant le code 9N9KDC6."
+    },
+    {
+      "question": "Puis-je utiliser le code si j'ai déjà un compte au Crédit Agricole ?",
+      "reponse": "Non, le parrainage est réservé aux nouveaux clients. Une personne déjà cliente ne peut pas en bénéficier, même pour un second compte."
+    },
+    {
+      "question": "Comment se passe l'ouverture : en ligne ou en agence ?",
+      "reponse": "Les deux sont possibles. En ligne via la page de l'offre, ou en agence en communiquant le code à votre conseiller lors du rendez-vous."
+    }
   ],
   "misAJour": "2026-09-17"
 }

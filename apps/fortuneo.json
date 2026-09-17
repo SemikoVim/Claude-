@@ -5,6 +5,7 @@
   "emoji": "🏦",
   "couleur": "#0f6e56",
   "siteWeb": "https://www.fortuneo.fr",
+  "accroche": "prime de bienvenue",
   "description": "Fortuneo est une banque en ligne française (groupe Crédit Mutuel Arkéa) qui propose un compte courant sans frais de tenue de compte, des cartes bancaires gratuites sous conditions de revenus ou d'utilisation, ainsi qu'une offre d'épargne, de bourse et d'assurance-vie.",
   "code": "12943425",
   "lienParrainage": null,
@@ -33,6 +34,20 @@
     "L'offre de parrainage est réservée aux nouveaux clients Fortuneo, majeurs et résidant en France.",
     "Le code doit être saisi au moment de la demande d'ouverture : il ne peut pas être ajouté après coup.",
     "Le montant et les conditions de la prime peuvent évoluer. Les conditions en vigueur sont celles publiées sur le site officiel de Fortuneo au moment de la souscription."
+  ],
+  "faq": [
+    {
+      "question": "Quand la prime de parrainage Fortuneo est-elle versée ?",
+      "reponse": "Une fois le compte ouvert, la carte activée et les conditions de l'offre remplies (généralement un nombre minimum de paiements par carte dans les premiers mois). Le versement intervient ensuite automatiquement sur votre compte Fortuneo."
+    },
+    {
+      "question": "Puis-je ajouter le code de parrainage après avoir ouvert mon compte ?",
+      "reponse": "Non. Le code 12943425 doit être saisi dans le formulaire d'ouverture, à la question « Avez-vous été parrainé ? ». Il n'est pas possible de l'ajouter ensuite."
+    },
+    {
+      "question": "Le code de parrainage a-t-il une date de fin ?",
+      "reponse": "Le code lui-même n'expire pas, mais le montant et les conditions de la prime sont ceux de l'offre Fortuneo en vigueur au moment de votre demande d'ouverture."
+    }
   ],
   "misAJour": "2026-09-17"
 }

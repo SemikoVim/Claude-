@@ -5,6 +5,7 @@
   "emoji": "🎁",
   "couleur": "#4f46e5",
   "siteWeb": "https://www.exemple.fr",
+  "accroche": "bénéfice en quelques mots pour le titre de la page",
   "description": "Une ou deux phrases pour présenter le service.",
   "code": "VOTRE-CODE",
   "lienParrainage": null,
@@ -27,6 +28,12 @@
   ],
   "conditions": [
     "Conditions ou remarques utiles (facultatif)."
+  ],
+  "faq": [
+    {
+      "question": "Une question fréquente ?",
+      "reponse": "La réponse."
+    }
   ],
   "misAJour": "2026-01-01"
 }

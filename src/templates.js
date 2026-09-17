@@ -37,7 +37,7 @@ function nomDomaine(url) {
 }
 
 // `prefixe` est le chemin relatif vers la racine du site ("" à la racine, "../" dans une sous-page).
-function gabarit({ site, titre, description, contenu, prefixe = "", couleur, chemin = "" }) {
+function gabarit({ site, titre, description, contenu, prefixe = "", couleur, chemin = "", jsonLd = [] }) {
   const titreComplet = titre ? `${titre} · ${site.titre}` : site.titre;
   const urlBase = (site.urlBase || "").replace(/\/?$/, "/");
   const urlPage = site.urlBase ? urlBase + chemin : "";
@@ -56,6 +56,7 @@ function gabarit({ site, titre, description, contenu, prefixe = "", couleur, che
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎁%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="${prefixe}assets/style.css">
   ${couleur ? `<style>:root{--accent:${e(couleur)}}</style>` : ""}
+  ${jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`).join("\n  ")}
 </head>
 <body>
   <header class="entete">
@@ -129,7 +130,7 @@ function sectionApplications(app) {
 export function pageAccueil({ site, apps }) {
   const contenu = `
     <section class="heros">
-      <h1>${e(site.titre)}</h1>
+      <h1>${e(site.titreAccueil || site.titre)}</h1>
       <p class="heros__slogan">${e(site.slogan)}</p>
       <p class="heros__intro">${e(site.introduction)}</p>
     </section>
@@ -141,16 +142,97 @@ export function pageAccueil({ site, apps }) {
           : `<p class="vide">Aucune application pour le moment.</p>`
       }
     </section>`;
-  return gabarit({ site, description: site.description, contenu, chemin: "" });
+  const noms = apps.map((a) => a.nom);
+  const titre = noms.length ? `Codes et liens de parrainage ${noms.slice(0, 4).join(", ")}${noms.length > 4 ? "…" : ""}` : site.titreAccueil || site.titre;
+  const jsonLd = site.urlBase
+    ? [{ "@context": "https://schema.org", "@type": "WebSite", name: site.titre, url: urlAbsolue(site, ""), description: site.description, inLanguage: site.langue || "fr" }]
+    : [];
+  return gabarit({ site, titre, description: site.description, contenu, chemin: "", jsonLd });
+}
+
+function urlAbsolue(site, chemin) {
+  return (site.urlBase || "").replace(/\/?$/, "/") + chemin;
+}
+
+// Titre SEO d'une page application : « Code parrainage Fortuneo 2026 : prime de bienvenue ».
+function titreSeo(app) {
+  const annee = app.misAJour ? ` ${app.misAJour.slice(0, 4)}` : "";
+  const base = app.code ? `Code parrainage ${app.nom}${annee}` : `Lien parrainage ${app.nom}${annee}`;
+  return app.accroche ? `${base} : ${app.accroche}` : base;
+}
+
+function descriptionSeo(app) {
+  const debut = app.code ? `Code parrainage ${app.nom} : ${app.code}.` : `Lien de parrainage ${app.nom}.`;
+  const accroche = app.accroche ? ` ${app.accroche.charAt(0).toUpperCase()}${app.accroche.slice(1)}.` : "";
+  const fin = app.misAJour ? ` Étapes et conditions vérifiées le ${dateFr(app.misAJour)}.` : "";
+  let d = `${debut}${accroche} ${app.avantagesFilleul[0]}${fin}`;
+  if (d.length > 160) d = `${debut}${accroche}${fin}`;
+  return d;
+}
+
+function sectionFaq(app) {
+  if (!app.faq.length) return "";
+  return `<section class="bloc faq" aria-labelledby="titre-faq">
+        <h2 id="titre-faq">❓ Questions fréquentes</h2>
+        ${app.faq.map((q) => `<details class="faq__item"><summary>${e(q.question)}</summary><p>${e(q.reponse)}</p></details>`).join("\n        ")}
+      </section>`;
+}
+
+function jsonLdApplication(site, app) {
+  if (!site.urlBase) return [];
+  const url = urlAbsolue(site, `${app.slug}/`);
+  const donnees = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: urlAbsolue(site, "") },
+        { "@type": "ListItem", position: 2, name: app.nom, item: url },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: app.code ? `Comment utiliser le code de parrainage ${app.nom}` : `Comment profiter du parrainage ${app.nom}`,
+      description: descriptionSeo(app),
+      inLanguage: site.langue || "fr",
+      step: app.etapes.map((texte, i) => ({ "@type": "HowToStep", position: i + 1, text: texte })),
+    },
+  ];
+  if (app.faq.length) {
+    donnees.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: app.faq.map((q) => ({ "@type": "Question", name: q.question, acceptedAnswer: { "@type": "Answer", text: q.reponse } })),
+    });
+  }
+  return donnees;
+}
+
+export function sitemap({ site, apps }) {
+  const derniere = apps.map((a) => a.misAJour).filter(Boolean).sort().pop();
+  const entree = (chemin, lastmod, priorite) =>
+    `  <url><loc>${e(urlAbsolue(site, chemin))}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ""}<priority>${priorite}</priority></url>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${[entree("", derniere, "1.0"), ...apps.map((a) => entree(`${a.slug}/`, a.misAJour, "0.8"))].join("\n")}
+</urlset>
+`;
+}
+
+export function robots({ site }) {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${urlAbsolue(site, "sitemap.xml")}
+`;
 }
 
 export function pageApplication({ site, app, apps }) {
   const prefixe = "../";
   const autres = apps.filter((a) => a.slug !== app.slug);
   const titre = app.code ? `Code de parrainage ${app.nom}` : `Parrainage ${app.nom}`;
-  const description = app.code
-    ? `Code de parrainage ${app.nom} : ${app.code}. ${app.avantagesFilleul[0]}`
-    : `Lien de parrainage ${app.nom}. ${app.avantagesFilleul[0]}`;
+  const description = descriptionSeo(app);
   const contenu = `
     <nav class="ariane" aria-label="Fil d'Ariane"><a href="${prefixe}">Accueil</a> › <span>${e(app.nom)}</span></nav>
     <article class="application">
@@ -159,6 +241,7 @@ export function pageApplication({ site, app, apps }) {
         <div>
           <p class="application__categorie">${e(app.categorie)}</p>
           <h1>${e(titre)}</h1>
+          ${app.accroche ? `<p class="application__accroche">${e(app.accroche.charAt(0).toUpperCase() + app.accroche.slice(1))}</p>` : ""}
           <p class="application__description">${e(app.description)}</p>
           <p><a class="lien-externe" href="${e(app.siteWeb)}" rel="noopener" target="_blank">${e(nomDomaine(app.siteWeb))} ↗</a></p>
         </div>
@@ -225,6 +308,8 @@ export function pageApplication({ site, app, apps }) {
       </section>`
           : ""
       }
+
+      ${sectionFaq(app)}
     </article>
 
     ${
@@ -235,7 +320,7 @@ export function pageApplication({ site, app, apps }) {
     </section>`
         : ""
     }`;
-  return gabarit({ site, titre, description, contenu, prefixe, couleur: app.couleur, chemin: `${app.slug}/` });
+  return gabarit({ site, titre: titreSeo(app), description, contenu, prefixe, couleur: app.couleur, chemin: `${app.slug}/`, jsonLd: jsonLdApplication(site, app) });
 }
 
 export function page404({ site }) {

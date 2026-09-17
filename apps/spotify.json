@@ -5,6 +5,7 @@
   "emoji": "🎵",
   "couleur": "#1db954",
   "siteWeb": "https://open.spotify.com/",
+  "accroche": "3 mois Premium gratuits",
   "description": "Spotify est le service de streaming musical le plus utilisé au monde : des millions de titres et de podcasts, des playlists personnalisées, et une formule Premium sans publicité avec écoute hors connexion.",
   "code": null,
   "lienParrainage": "https://open.spotify.com/referral/0039885d652f8c97dc0f85fbb57e26139b8f50b7333b1dffc1fa0a?si=xb8o-yWiTRqfOfSF9wbskA&utm_source=copy-link&locale=fr",
@@ -29,6 +30,20 @@
     "Il n'y a pas de code à saisir : l'offre est appliquée en passant par le lien.",
     "Réservé aux personnes qui n'ont jamais eu d'abonnement Premium (ou selon les conditions de l'offre en cours).",
     "À la fin de la période gratuite, l'abonnement se poursuit au tarif Premium en vigueur, sauf résiliation. La durée de l'offre et ses conditions sont celles affichées par Spotify au moment de l'activation."
+  ],
+  "faq": [
+    {
+      "question": "Faut-il un code pour obtenir les 3 mois de Spotify Premium ?",
+      "reponse": "Non, il suffit de passer par le lien de parrainage. L'offre s'applique automatiquement au compte avec lequel vous êtes connecté."
+    },
+    {
+      "question": "Puis-je profiter de l'offre si j'ai déjà eu Spotify Premium ?",
+      "reponse": "L'offre est en principe réservée aux personnes qui n'ont jamais eu d'abonnement Premium, ou n'en ont pas eu depuis un certain temps. Spotify indique votre éligibilité en ouvrant le lien."
+    },
+    {
+      "question": "Que se passe-t-il à la fin des 3 mois gratuits ?",
+      "reponse": "L'abonnement continue au tarif Premium en vigueur, sauf résiliation avant la fin de la période. Vous pouvez résilier à tout moment depuis les paramètres de votre compte Spotify, sans frais."
+    }
   ],
   "misAJour": "2026-09-17"
 }

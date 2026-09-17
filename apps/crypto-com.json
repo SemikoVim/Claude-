@@ -5,6 +5,7 @@
   "emoji": "🪙",
   "couleur": "#1e3a8a",
   "siteWeb": "https://crypto.com/",
+  "accroche": "bonus crypto de bienvenue",
   "description": "Crypto.com est une plateforme d'achat, de vente et de conservation de cryptomonnaies, avec une application mobile, une carte de paiement Visa rechargeable en crypto et un programme de récompenses.",
   "code": "xqp6yvffm7",
   "lienParrainage": "https://crypto.com/app/xqp6yvffm7",
@@ -31,6 +32,20 @@
     "Le code doit être saisi à l'inscription, il ne peut pas être ajouté ensuite.",
     "Les cryptomonnaies sont des actifs volatils : n'investissez que ce que vous êtes prêt à perdre.",
     "Le montant du bonus et les conditions pour le débloquer varient dans le temps : la version en vigueur est celle affichée dans l'application Crypto.com."
+  ],
+  "faq": [
+    {
+      "question": "Où saisir le code de parrainage Crypto.com ?",
+      "reponse": "Lors de la création du compte dans l'application, un champ « Code de parrainage » est proposé. Saisissez xqp6yvffm7, ou passez par le lien de parrainage qui le pré-remplit."
+    },
+    {
+      "question": "Quand le bonus Crypto.com est-il débloqué ?",
+      "reponse": "Après la vérification de votre identité et une fois la condition de l'offre en cours remplie, par exemple un premier achat ou une mise en staking d'un montant minimum. Le détail est affiché dans l'application au moment de l'inscription."
+    },
+    {
+      "question": "Le bonus est-il versé en euros ?",
+      "reponse": "Non, il est versé en cryptomonnaie (le plus souvent en CRO). Sa valeur en euros varie donc avec le cours."
+    }
   ],
   "misAJour": "2026-09-17"
 }

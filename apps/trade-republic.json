@@ -5,6 +5,7 @@
   "emoji": "📈",
   "couleur": "#111827",
   "siteWeb": "https://traderepublic.com/fr-fr",
+  "accroche": "une action offerte",
   "description": "Trade Republic est un courtier et une banque en ligne allemande : achat d'actions, d'ETF et de cryptomonnaies à frais réduits, plans d'investissement programmés, compte rémunéré et carte de paiement.",
   "code": null,
   "lienParrainage": "https://refnocode.trade.re/5h2z4qf4",
@@ -31,6 +32,20 @@
     "Il n'y a pas de code à saisir : le parrainage n'est pris en compte que si le compte est créé en passant par le lien.",
     "Réservé aux nouveaux clients Trade Republic, majeurs et résidant dans un pays où le service est disponible.",
     "Investir en bourse comporte un risque de perte en capital. Les conditions précises de l'offre sont celles affichées par Trade Republic au moment de l'inscription."
+  ],
+  "faq": [
+    {
+      "question": "Y a-t-il un code de parrainage Trade Republic à saisir ?",
+      "reponse": "Non. Trade Republic fonctionne uniquement avec un lien de parrainage. Le parrainage est pris en compte si vous créez votre compte en passant par ce lien."
+    },
+    {
+      "question": "Comment est choisie l'action offerte ?",
+      "reponse": "Elle est tirée au sort parmi une sélection d'actions, avec une valeur variable. Elle apparaît dans votre portefeuille une fois les conditions de l'offre remplies."
+    },
+    {
+      "question": "Puis-je revendre l'action offerte tout de suite ?",
+      "reponse": "Trade Republic peut imposer un délai de conservation avant la revente. Les conditions exactes sont indiquées dans l'application lors de l'attribution."
+    }
   ],
   "misAJour": "2026-09-17"
 }

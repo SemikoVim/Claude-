@@ -7,7 +7,7 @@
 import { readdir, readFile, writeFile, mkdir, rm, cp, access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { pageAccueil, pageApplication, page404 } from "./templates.js";
+import { pageAccueil, pageApplication, page404, sitemap, robots } from "./templates.js";
 
 const racine = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dossierApps = path.join(racine, "apps");
@@ -16,7 +16,7 @@ const dossierSortie = path.join(racine, "dist");
 const modeVerification = process.argv.includes("--check");
 
 const CHAMPS_OBLIGATOIRES = ["slug", "nom", "categorie", "siteWeb", "avantagesFilleul", "etapes"];
-const CHAMPS_LISTES = ["avantagesFilleul", "avantagesParrain", "etapes", "conditions"];
+const CHAMPS_LISTES = ["avantagesFilleul", "avantagesParrain", "etapes", "conditions", "faq"];
 
 function valider(app, fichier) {
   const erreurs = [];
@@ -51,6 +51,13 @@ function valider(app, fichier) {
   }
   for (const champ of ["siteWeb", "lienInscription", "lienParrainage"]) {
     if (app[champ] && !/^https?:\/\//.test(app[champ])) erreurs.push(`"${champ}" doit être une URL commençant par http(s)://`);
+  }
+  if (Array.isArray(app.faq)) {
+    for (const [i, q] of app.faq.entries()) {
+      if (!q || typeof q.question !== "string" || typeof q.reponse !== "string") {
+        erreurs.push(`"faq[${i}]" doit être un objet { "question": "...", "reponse": "..." }`);
+      }
+    }
   }
   if (app.misAJour !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(app.misAJour)) {
     erreurs.push(`"misAJour" doit être au format AAAA-MM-JJ`);
@@ -89,6 +96,8 @@ async function chargerApplications() {
       logoSvg,
       avantagesParrain: [],
       conditions: [],
+      faq: [],
+      accroche: null,
       emoji: "🎁",
       couleur: "#4f46e5",
       code: null,
@@ -131,10 +140,14 @@ async function construire() {
     await mkdir(dossier, { recursive: true });
     await writeFile(path.join(dossier, "index.html"), pageApplication({ site, app, apps }));
   }
+  if (site.urlBase) {
+    await writeFile(path.join(dossierSortie, "sitemap.xml"), sitemap({ site, apps }));
+    await writeFile(path.join(dossierSortie, "robots.txt"), robots({ site }));
+  }
   await writeFile(path.join(dossierSortie, ".nojekyll"), "");
   // Nom de domaine personnalisé : fichier CNAME attendu par GitHub Pages.
   if (site.domaine) await writeFile(path.join(dossierSortie, "CNAME"), `${site.domaine}\n`);
-  console.log(`✓ Site généré dans dist/ (${apps.length + 2} pages)`);
+  console.log(`✓ Site généré dans dist/ (${apps.length + 2} pages${site.urlBase ? ", sitemap.xml, robots.txt" : ""})`);
 }
 
 construire().catch((e) => {

@@ -173,7 +173,13 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
   color: var(--accent-texte);
   font-weight: 600;
 }
+.application__accroche { margin: 0 0 0.5rem; font-size: 1.15rem; font-weight: 600; }
 .application__description { color: var(--texte-2); margin: 0.5rem 0; }
+.faq__item { border-top: 1px solid var(--bordure); padding: 0.6rem 0; }
+.faq__item:first-of-type { border-top: none; padding-top: 0; }
+.faq__item summary { cursor: pointer; font-weight: 600; padding: 0.2rem 0; }
+.faq__item summary:hover { color: var(--accent-texte); }
+.faq__item p { margin: 0.5rem 0 0.2rem; color: var(--texte-2); }
 .lien-externe { font-weight: 500; }
 
 .code {
