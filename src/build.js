@@ -36,6 +36,19 @@ function valider(app, fichier) {
   if (typeof app.slug === "string" && app.slug !== path.basename(fichier, ".json")) {
     erreurs.push(`le slug "${app.slug}" doit correspondre au nom du fichier "${fichier}"`);
   }
+  if (app.applications !== undefined) {
+    if (typeof app.applications !== "object" || Array.isArray(app.applications) || app.applications === null) {
+      erreurs.push(`le champ "applications" doit être un objet de la forme { "ios": "...", "android": "..." }`);
+    } else {
+      for (const [cle, url] of Object.entries(app.applications)) {
+        if (!["ios", "android"].includes(cle)) erreurs.push(`plateforme inconnue dans "applications" : "${cle}" (attendu : ios, android)`);
+        else if (typeof url !== "string" || !/^https?:\/\//.test(url)) erreurs.push(`"applications.${cle}" doit être une URL commençant par http(s)://`);
+      }
+    }
+  }
+  for (const champ of ["siteWeb", "lienInscription", "lienParrainage"]) {
+    if (app[champ] && !/^https?:\/\//.test(app[champ])) erreurs.push(`"${champ}" doit être une URL commençant par http(s)://`);
+  }
   if (app.misAJour !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(app.misAJour)) {
     erreurs.push(`"misAJour" doit être au format AAAA-MM-JJ`);
   }
@@ -68,6 +81,8 @@ async function chargerApplications() {
       emoji: "🎁",
       couleur: "#4f46e5",
       lienParrainage: null,
+      lienInscription: null,
+      applications: {},
       ...app,
     });
   }

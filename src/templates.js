@@ -1,4 +1,5 @@
 // Gabarits HTML du site. Chaque fonction reçoit des données et renvoie une page complète.
+import { qrSvg } from "./qr.js";
 
 export function echapper(valeur) {
   return String(valeur ?? "")
@@ -86,6 +87,34 @@ function carteApplication(app, prefixe = "") {
     </a>`;
 }
 
+const MAGASINS = {
+  ios: { nom: "iPhone et iPad", libelle: "Télécharger sur l'App Store" },
+  android: { nom: "Android", libelle: "Disponible sur Google Play" },
+};
+
+// Cartes « application mobile » : un QR code vers chaque boutique, plus un bouton pour ceux qui lisent la page sur leur téléphone.
+function sectionApplications(app) {
+  const entrees = Object.entries(MAGASINS).filter(([cle]) => app.applications?.[cle]);
+  if (!entrees.length) return "";
+  return `<section class="bloc applis" aria-labelledby="titre-applis">
+        <h2 id="titre-applis">📱 L'application mobile ${e(app.nom)}</h2>
+        <p class="applis__intro">Scannez le QR code avec votre téléphone, ou appuyez sur le bouton si vous lisez cette page depuis votre mobile.</p>
+        <div class="applis__grille">
+          ${entrees
+            .map(
+              ([cle, m]) => `<div class="appli">
+            <a class="appli__qr" href="${e(app.applications[cle])}" rel="noopener" target="_blank" aria-label="${e(m.libelle)} (QR code)">
+              ${qrSvg(app.applications[cle], { taille: 150, titre: `QR code : ${m.libelle}` })}
+            </a>
+            <p class="appli__plateforme">${e(m.nom)}</p>
+            <a class="bouton bouton--magasin" href="${e(app.applications[cle])}" rel="noopener" target="_blank">${e(m.libelle)} <span aria-hidden="true">↗</span></a>
+          </div>`
+            )
+            .join("\n")}
+        </div>
+      </section>`;
+}
+
 export function pageAccueil({ site, apps }) {
   const contenu = `
     <section class="heros">
@@ -128,12 +157,22 @@ export function pageApplication({ site, app, apps }) {
           <button class="bouton" type="button" data-copier="${e(app.code)}">Copier le code</button>
         </div>
         ${
+          app.lienInscription
+            ? `<div class="cta">
+          <a class="bouton bouton--grand" href="${e(app.lienInscription)}" rel="noopener" target="_blank">${e(app.libelleInscription || `Ouvrir un compte ${app.nom}`)} <span aria-hidden="true">↗</span></a>
+          <p class="cta__aide">Pensez à saisir le code <strong>${e(app.code)}</strong> pendant l'inscription.</p>
+        </div>`
+            : ""
+        }
+        ${
           app.lienParrainage
             ? `<p class="code__lien">Ou passez directement par mon lien de parrainage : <a class="bouton bouton--secondaire" href="${e(app.lienParrainage)}" rel="noopener" target="_blank">Ouvrir le lien ↗</a></p>`
             : ""
         }
         ${app.misAJour ? `<p class="code__maj">Vérifié le ${e(dateFr(app.misAJour))}</p>` : ""}
       </section>
+
+      ${sectionApplications(app)}
 
       <div class="colonnes">
         <section class="bloc">

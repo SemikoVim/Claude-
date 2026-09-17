@@ -285,3 +285,66 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
   .application__entete { flex-direction: column; }
   .bouton--secondaire { margin-left: 0; margin-top: 0.5rem; }
 }
+
+/* Bouton principal vers la création de compte */
+.cta { margin-top: 1.25rem; }
+.bouton--grand {
+  font-size: 1.15rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.cta__aide { margin: 0.75rem 0 0; color: var(--texte-2); font-size: 0.95rem; }
+
+/* Applications mobiles et QR codes */
+.applis__intro { margin: 0 0 1.25rem; color: var(--texte-2); }
+.applis__grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.appli {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 1.2rem 1rem;
+  background: var(--surface-2);
+  border-radius: var(--rayon);
+}
+.appli__qr {
+  display: block;
+  line-height: 0;
+  background: #fff;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--bordure);
+}
+.appli__qr .qr { display: block; width: 150px; height: 150px; max-width: 100%; }
+.appli__plateforme { margin: 0.2rem 0 0; font-weight: 700; }
+.bouton--magasin {
+  width: 100%;
+  max-width: 320px;
+  white-space: nowrap;
+  background: var(--texte);
+  color: var(--fond);
+}
+
+/* Confort sur téléphone : cibles tactiles larges, boutons pleine largeur, en-tête compact */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .conteneur { padding-inline: 16px; }
+  main.conteneur { padding-block: 1.25rem 3rem; }
+  .entete__marque { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .entete__nav { flex-shrink: 0; }
+  .code { padding: 1.25rem 1rem; }
+  .code__bloc { flex-direction: column; gap: 0.75rem; }
+  .code__valeur { width: 100%; text-align: center; }
+  .code__bloc .bouton, .bouton--grand, .bouton--secondaire, .bouton--magasin { width: 100%; max-width: none; }
+  .bouton--grand { font-size: 1.05rem; padding-inline: 1rem; }
+  .bouton--magasin { font-size: 0.95rem; padding-inline: 0.8rem; }
+  .bouton { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
+  .bloc { padding: 1.1rem 1rem; }
+  .applis__grille { grid-template-columns: 1fr; }
+}

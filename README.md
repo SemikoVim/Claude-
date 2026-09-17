@@ -36,6 +36,9 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 | `description` | non | Présentation du service. |
 | `avantagesParrain` | non | Ce que le parrain reçoit. Liste vide pour masquer la section. |
 | `conditions` | non | Conditions, restrictions ou remarques. |
+| `lienInscription` | non | Lien vers la page de création de compte : affiche un gros bouton sous le code. |
+| `libelleInscription` | non | Texte du bouton d'inscription (par défaut « Ouvrir un compte <nom> »). |
+| `applications` | non | Liens vers l'application mobile : `{ "ios": "...", "android": "..." }`. Un QR code est généré pour chaque lien fourni. |
 | `lienParrainage` | non | Lien de parrainage direct, si le service en fournit un. |
 | `emoji` | non | Icône affichée (par défaut 🎁). |
 | `couleur` | non | Couleur d'accent de la page, au format hexadécimal. |
@@ -49,6 +52,7 @@ Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient 
 - `assets/script.js` : bouton « Copier le code ».
 - `src/templates.js` : structure HTML des pages.
 - `src/build.js` : génération et validation.
+- `src/qr.js` : QR codes en SVG (s'appuie sur `src/vendor/qrcode.js`, bibliothèque MIT vendue telle quelle).
 
 ## Publication
 
@@ -63,6 +67,8 @@ apps/                  un fichier JSON par application (la seule chose à édite
 assets/                feuille de style et script copiés tels quels dans dist/assets/
 src/build.js           génère dist/ à partir de apps/ et site.config.json
 src/templates.js       gabarits HTML (accueil, page application, page 404)
+src/qr.js              génération des QR codes en SVG
+src/vendor/            encodeur QR (qrcode-generator, MIT) copié dans le dépôt
 src/serve.js           serveur local de prévisualisation
 site.config.json       titre, slogan, introduction du site
 .github/workflows/     vérification des JSON et déploiement GitHub Pages

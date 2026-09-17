@@ -8,6 +8,12 @@
   "description": "Une ou deux phrases pour présenter le service.",
   "code": "VOTRE-CODE",
   "lienParrainage": null,
+  "lienInscription": "https://www.exemple.fr/inscription",
+  "libelleInscription": "Créer un compte",
+  "applications": {
+    "ios": "https://apps.apple.com/fr/app/...",
+    "android": "https://play.google.com/store/apps/details?id=..."
+  },
   "avantagesFilleul": [
     "Premier avantage pour la personne qui utilise le code (affiché aussi sur la carte de l'accueil).",
     "Deuxième avantage."
