@@ -41,9 +41,16 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 | `applications` | non | Liens vers l'application mobile : `{ "ios": "...", "android": "..." }`. Un QR code est généré pour chaque lien fourni. |
 | `lienParrainage` | non | Lien de parrainage direct, si le service en fournit un. Devient le bouton principal s'il n'y a pas de code. |
 | `libelleParrainage` | non | Texte du bouton du lien de parrainage. |
-| `emoji` | non | Icône affichée (par défaut 🎁). |
+| `logo` | non | Nom d'un fichier SVG dans `assets/logos/`. Par défaut, le fichier `assets/logos/<slug>.svg` est utilisé s'il existe. |
+| `emoji` | non | Icône de secours quand aucun logo n'est disponible (par défaut 🎁). |
 | `couleur` | non | Couleur d'accent de la page, au format hexadécimal. |
 | `misAJour` | non | Date de dernière vérification, au format `AAAA-MM-JJ`. |
+
+### Logos
+
+Déposez un fichier `assets/logos/<slug>.svg` et il remplace automatiquement l'émoji sur la carte d'accueil et en tête de page. Le SVG est inséré tel quel dans la page : un logo monochrome qui utilise `currentColor` prend la couleur d'accent de l'application (et s'éclaircit en mode sombre).
+
+Sources des logos actuels : Coinbase et Crypto.com viennent de [web3icons](https://github.com/0xa3k5/web3icons) (MIT), Spotify de [gilbarbara/logos](https://github.com/gilbarbara/logos), Fortuneo, Crédit Agricole et Trade Republic d'[Arcticons](https://arcticons.com) (CC BY-SA 4.0, mention obligatoire en pied de page). Les marques restent la propriété de leurs titulaires.
 
 ## Personnaliser le site
 

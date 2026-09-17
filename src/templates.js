@@ -70,6 +70,7 @@ ${contenu}
   <footer class="pied">
     <div class="conteneur">
       <p>${e(site.titre)}${site.auteur ? ` · ${e(site.auteur)}` : ""}. Les offres de parrainage sont définies par chaque service et peuvent changer : vérifiez toujours les conditions sur le site officiel avant de souscrire.</p>
+      <p class="pied__credits">Les noms et logos des services appartiennent à leurs propriétaires respectifs. Certains pictogrammes proviennent d'<a href="https://arcticons.com" rel="noopener">Arcticons</a> (CC BY-SA 4.0) et de <a href="https://github.com/0xa3k5/web3icons" rel="noopener">web3icons</a> (MIT).</p>
     </div>
   </footer>
   <script src="${prefixe}assets/script.js" defer></script>
@@ -78,9 +79,16 @@ ${contenu}
 `;
 }
 
+// Logo SVG inline (pour hériter de la couleur via currentColor), sinon l'émoji de secours.
+function logo(app, classe) {
+  return app.logoSvg
+    ? `<span class="${classe} ${classe}--logo" aria-hidden="true">${app.logoSvg}</span>`
+    : `<span class="${classe}" aria-hidden="true">${e(app.emoji)}</span>`;
+}
+
 function carteApplication(app, prefixe = "") {
   return `<a class="carte" href="${prefixe}${e(app.slug)}/" style="--accent:${e(app.couleur)}">
-      <span class="carte__emoji" aria-hidden="true">${e(app.emoji)}</span>
+      ${logo(app, "carte__emoji")}
       <span class="carte__corps">
         <span class="carte__categorie">${e(app.categorie)}</span>
         <span class="carte__nom">${e(app.nom)}</span>
@@ -147,7 +155,7 @@ export function pageApplication({ site, app, apps }) {
     <nav class="ariane" aria-label="Fil d'Ariane"><a href="${prefixe}">Accueil</a> › <span>${e(app.nom)}</span></nav>
     <article class="application">
       <header class="application__entete">
-        <span class="application__emoji" aria-hidden="true">${e(app.emoji)}</span>
+        ${logo(app, "application__emoji")}
         <div>
           <p class="application__categorie">${e(app.categorie)}</p>
           <h1>${e(titre)}</h1>

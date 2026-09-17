@@ -127,6 +127,8 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
 }
 .carte:hover { transform: translateY(-2px); text-decoration: none; }
 .carte__emoji { font-size: 1.8rem; line-height: 1; }
+.carte__emoji--logo { width: 44px; height: 44px; flex-shrink: 0; color: var(--accent-texte); }
+.carte__emoji--logo svg { width: 100%; height: 100%; display: block; }
 .carte__corps { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
 .carte__categorie { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--texte-2); }
 .carte__nom { font-weight: 700; font-size: 1.15rem; }
@@ -161,6 +163,8 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
   padding: 0.7rem;
   flex-shrink: 0;
 }
+.application__emoji--logo { width: 88px; height: 88px; color: var(--accent-texte); }
+.application__emoji--logo svg { width: 100%; height: 100%; display: block; }
 .application__categorie {
   margin: 0 0 0.3rem;
   font-size: 0.85rem;
@@ -291,6 +295,7 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
   color: var(--texte-2);
 }
 .pied p { margin: 0; }
+.pied__credits { margin-top: 0.5rem !important; font-size: 0.8rem; }
 
 @media (max-width: 520px) {
   .application__entete { flex-direction: column; }

@@ -4,7 +4,7 @@
 //   node src/build.js          → construit le site
 //   node src/build.js --check  → valide seulement les fichiers JSON
 
-import { readdir, readFile, writeFile, mkdir, rm, cp } from "node:fs/promises";
+import { readdir, readFile, writeFile, mkdir, rm, cp, access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pageAccueil, pageApplication, page404 } from "./templates.js";
@@ -78,7 +78,15 @@ async function chargerApplications() {
       for (const e of erreurs) console.error(`✗ apps/${fichier} : ${e}`);
       continue;
     }
+    const cheminLogo = path.join(dossierAssets, "logos", app.logo || `${app.slug}.svg`);
+    const logoSvg = await readFile(cheminLogo, "utf8").catch(() => null);
+    if (app.logo && logoSvg === null) {
+      console.error(`✗ apps/${fichier} : logo introuvable (assets/logos/${app.logo})`);
+      nbErreurs++;
+      continue;
+    }
     apps.push({
+      logoSvg,
       avantagesParrain: [],
       conditions: [],
       emoji: "🎁",
