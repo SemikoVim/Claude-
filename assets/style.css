@@ -194,7 +194,9 @@ main.conteneur { flex: 1; padding-block: 2rem 4rem; }
   user-select: all;
   word-break: break-all;
 }
-.code__lien { margin: 0.5rem 0 0; color: var(--texte-2); }
+.code__explication { margin: 0 0 1rem; color: var(--texte-2); }
+.cta + .cta { margin-top: 0.75rem; }
+.cta .bouton--secondaire { margin-left: 0; margin-top: 0.5rem; }
 .code__maj { margin: 0.75rem 0 0; font-size: 0.85rem; color: var(--texte-2); }
 
 .bouton {

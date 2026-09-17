@@ -1,0 +1,35 @@
+{
+  "slug": "credit-agricole",
+  "nom": "Crédit Agricole",
+  "categorie": "Banque",
+  "emoji": "🏛️",
+  "couleur": "#0f7a5c",
+  "siteWeb": "https://www.credit-agricole.fr/",
+  "description": "Le Crédit Agricole est une banque de proximité organisée en caisses régionales, avec des agences partout en France, une application mobile complète et une offre allant du compte courant à l'épargne, au crédit et à l'assurance.",
+  "code": "9N9KDC6",
+  "lienParrainage": "https://www.credit-agricole.fr/ca-pyrenees-gascogne/particulier/campagnes/parrainage.html?code-parrainage=9N9KDC6&offre=parrainagenatio",
+  "libelleParrainage": "Découvrir l'offre de parrainage",
+  "lienInscription": null,
+  "applications": {
+    "android": "https://play.google.com/store/apps/details?id=fr.creditagricole.androidapp&hl=fr"
+  },
+  "avantagesFilleul": [
+    "Une prime de bienvenue versée après l'ouverture d'un compte avec le code de parrainage (montant selon l'offre en cours, détaillé sur la page de l'offre).",
+    "Une banque avec des agences physiques et un conseiller dédié, en plus de l'application mobile."
+  ],
+  "avantagesParrain": [
+    "Une prime de parrainage versée une fois le compte du filleul ouvert et les conditions remplies."
+  ],
+  "etapes": [
+    "Ouvrez la page de l'offre de parrainage via le bouton ci-dessus : le code 9N9KDC6 y est déjà renseigné.",
+    "Suivez la démarche d'ouverture de compte proposée (en ligne ou en prenant rendez-vous en agence).",
+    "Si un conseiller vous demande un code de parrainage, communiquez-lui 9N9KDC6.",
+    "La prime est versée sur votre nouveau compte une fois les conditions de l'offre remplies."
+  ],
+  "conditions": [
+    "Le Crédit Agricole est organisé en caisses régionales : le lien pointe vers la caisse Pyrénées Gascogne, mais l'offre de parrainage nationale est en principe valable dans toutes. Confirmez-le auprès de la caisse dans laquelle vous ouvrez votre compte.",
+    "Réservé aux nouveaux clients, majeurs, n'ayant pas de compte au Crédit Agricole.",
+    "Le montant de la prime et les conditions sont ceux publiés sur le site du Crédit Agricole au moment de l'ouverture."
+  ],
+  "misAJour": "2026-09-17"
+}

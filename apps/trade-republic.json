@@ -1,0 +1,36 @@
+{
+  "slug": "trade-republic",
+  "nom": "Trade Republic",
+  "categorie": "Courtier en ligne",
+  "emoji": "📈",
+  "couleur": "#111827",
+  "siteWeb": "https://traderepublic.com/fr-fr",
+  "description": "Trade Republic est un courtier et une banque en ligne allemande : achat d'actions, d'ETF et de cryptomonnaies à frais réduits, plans d'investissement programmés, compte rémunéré et carte de paiement.",
+  "code": null,
+  "lienParrainage": "https://refnocode.trade.re/5h2z4qf4",
+  "libelleParrainage": "Ouvrir un compte Trade Republic avec mon lien",
+  "lienInscription": null,
+  "applications": {
+    "ios": "https://apps.apple.com/fr/app/trade-republic-broker-bank/id1410703839",
+    "android": "https://play.google.com/store/apps/details?id=de.traderepublic.app&hl=fr"
+  },
+  "avantagesFilleul": [
+    "Une action offerte à l'ouverture du compte via le lien de parrainage, une fois les conditions de l'offre remplies (valeur variable, tirée au sort parmi une sélection).",
+    "Accès à Trade Republic : achat d'actions et d'ETF à 1 € de frais par ordre, plans d'investissement sans frais, intérêts sur les liquidités."
+  ],
+  "avantagesParrain": [
+    "Une action offerte également, une fois le compte du filleul ouvert et les conditions remplies."
+  ],
+  "etapes": [
+    "Ouvrez mon lien de parrainage depuis votre téléphone : il vous dirige vers l'installation de l'application avec le parrainage déjà associé.",
+    "Créez votre compte (adresse e-mail, numéro de téléphone) et vérifiez votre identité.",
+    "Réalisez le premier dépôt ou la première opération demandée par l'offre en cours.",
+    "L'action offerte apparaît ensuite dans votre portefeuille."
+  ],
+  "conditions": [
+    "Il n'y a pas de code à saisir : le parrainage n'est pris en compte que si le compte est créé en passant par le lien.",
+    "Réservé aux nouveaux clients Trade Republic, majeurs et résidant dans un pays où le service est disponible.",
+    "Investir en bourse comporte un risque de perte en capital. Les conditions précises de l'offre sont celles affichées par Trade Republic au moment de l'inscription."
+  ],
+  "misAJour": "2026-09-17"
+}

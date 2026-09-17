@@ -30,7 +30,7 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 | `nom` | oui | Nom affiché de l'application. |
 | `categorie` | oui | Catégorie courte (Banque en ligne, Streaming, Mobilité...). |
 | `siteWeb` | oui | Adresse du site officiel. |
-| `code` | oui | Le code de parrainage. |
+| `code` | oui* | Le code de parrainage. *Facultatif si `lienParrainage` est renseigné (certains services n'ont qu'un lien). |
 | `avantagesFilleul` | oui | Liste des avantages pour la personne qui utilise le code. Le premier sert de résumé sur l'accueil. |
 | `etapes` | oui | Liste ordonnée des étapes pour utiliser le code. |
 | `description` | non | Présentation du service. |
@@ -39,7 +39,8 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 | `lienInscription` | non | Lien vers la page de création de compte : affiche un gros bouton sous le code. |
 | `libelleInscription` | non | Texte du bouton d'inscription (par défaut « Ouvrir un compte <nom> »). |
 | `applications` | non | Liens vers l'application mobile : `{ "ios": "...", "android": "..." }`. Un QR code est généré pour chaque lien fourni. |
-| `lienParrainage` | non | Lien de parrainage direct, si le service en fournit un. |
+| `lienParrainage` | non | Lien de parrainage direct, si le service en fournit un. Devient le bouton principal s'il n'y a pas de code. |
+| `libelleParrainage` | non | Texte du bouton du lien de parrainage. |
 | `emoji` | non | Icône affichée (par défaut 🎁). |
 | `couleur` | non | Couleur d'accent de la page, au format hexadécimal. |
 | `misAJour` | non | Date de dernière vérification, au format `AAAA-MM-JJ`. |

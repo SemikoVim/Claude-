@@ -1,0 +1,34 @@
+{
+  "slug": "spotify",
+  "nom": "Spotify",
+  "categorie": "Musique et podcasts",
+  "emoji": "🎵",
+  "couleur": "#1db954",
+  "siteWeb": "https://open.spotify.com/",
+  "description": "Spotify est le service de streaming musical le plus utilisé au monde : des millions de titres et de podcasts, des playlists personnalisées, et une formule Premium sans publicité avec écoute hors connexion.",
+  "code": null,
+  "lienParrainage": "https://open.spotify.com/referral/0039885d652f8c97dc0f85fbb57e26139b8f50b7333b1dffc1fa0a?si=xb8o-yWiTRqfOfSF9wbskA&utm_source=copy-link&locale=fr",
+  "libelleParrainage": "Profiter de 3 mois de Spotify Premium gratuits",
+  "lienInscription": null,
+  "applications": {
+    "ios": "https://apps.apple.com/fr/app/spotify-musique-et-podcasts/id324684580",
+    "android": "https://play.google.com/store/apps/details?id=com.spotify.music&hl=fr"
+  },
+  "avantagesFilleul": [
+    "3 mois de Spotify Premium gratuits en passant par mon lien de parrainage.",
+    "Musique sans publicité, écoute hors connexion, qualité audio supérieure et lecture de n'importe quel titre à la demande."
+  ],
+  "avantagesParrain": [],
+  "etapes": [
+    "Ouvrez mon lien de parrainage, de préférence sur le téléphone où vous utiliserez Spotify.",
+    "Connectez-vous à votre compte Spotify ou créez-en un.",
+    "Acceptez l'offre Premium proposée : les 3 premiers mois sont offerts.",
+    "Pensez à noter la date de fin de la période gratuite si vous ne souhaitez pas continuer en abonnement payant ensuite."
+  ],
+  "conditions": [
+    "Il n'y a pas de code à saisir : l'offre est appliquée en passant par le lien.",
+    "Réservé aux personnes qui n'ont jamais eu d'abonnement Premium (ou selon les conditions de l'offre en cours).",
+    "À la fin de la période gratuite, l'abonnement se poursuit au tarif Premium en vigueur, sauf résiliation. La durée de l'offre et ses conditions sont celles affichées par Spotify au moment de l'activation."
+  ],
+  "misAJour": "2026-09-17"
+}

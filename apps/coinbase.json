@@ -1,0 +1,35 @@
+{
+  "slug": "coinbase",
+  "nom": "Coinbase",
+  "categorie": "Cryptomonnaies",
+  "emoji": "💰",
+  "couleur": "#0052ff",
+  "siteWeb": "https://www.coinbase.com/fr-fr",
+  "description": "Coinbase est l'une des plus grandes plateformes d'échange de cryptomonnaies au monde : achat, vente et conservation de bitcoin, ether et de centaines d'autres actifs, avec une interface simple et une application mobile.",
+  "code": "5EFVAAY",
+  "lienParrainage": "https://coinbase.com/join/5EFVAAY?src=ios-link",
+  "lienInscription": null,
+  "applications": {
+    "ios": "https://apps.apple.com/fr/app/coinbase-buy-bitcoin-ether/id886427730",
+    "android": "https://play.google.com/store/apps/details?id=com.coinbase.android&hl=fr"
+  },
+  "avantagesFilleul": [
+    "Un bonus en cryptomonnaie offert après votre premier achat ou vente atteignant le montant demandé par l'offre en cours.",
+    "Accès à Coinbase : achat et vente de cryptomonnaies, portefeuille sécurisé, application mobile."
+  ],
+  "avantagesParrain": [
+    "Un bonus en cryptomonnaie équivalent, versé lorsque le filleul réalise sa première opération éligible."
+  ],
+  "etapes": [
+    "Créez votre compte en passant par mon lien de parrainage : le code 5EFVAAY est associé automatiquement.",
+    "Sinon, inscrivez-vous sur coinbase.com ou dans l'application et saisissez 5EFVAAY dans le champ « Code de parrainage ».",
+    "Vérifiez votre identité et ajoutez un moyen de paiement.",
+    "Effectuez un premier achat ou une première vente du montant minimum indiqué par l'offre : le bonus est ensuite crédité sur votre compte."
+  ],
+  "conditions": [
+    "Le parrainage doit être associé à l'inscription, il ne peut pas être ajouté après la création du compte.",
+    "Les cryptomonnaies sont des actifs volatils : n'investissez que ce que vous êtes prêt à perdre.",
+    "Le montant du bonus, le montant minimum de la première opération et le délai pour la réaliser sont ceux affichés par Coinbase au moment de l'inscription."
+  ],
+  "misAJour": "2026-09-17"
+}

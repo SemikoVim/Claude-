@@ -139,7 +139,10 @@ export function pageAccueil({ site, apps }) {
 export function pageApplication({ site, app, apps }) {
   const prefixe = "../";
   const autres = apps.filter((a) => a.slug !== app.slug);
-  const description = `Code de parrainage ${app.nom} : ${app.code}. ${app.avantagesFilleul[0]}`;
+  const titre = app.code ? `Code de parrainage ${app.nom}` : `Parrainage ${app.nom}`;
+  const description = app.code
+    ? `Code de parrainage ${app.nom} : ${app.code}. ${app.avantagesFilleul[0]}`
+    : `Lien de parrainage ${app.nom}. ${app.avantagesFilleul[0]}`;
   const contenu = `
     <nav class="ariane" aria-label="Fil d'Ariane"><a href="${prefixe}">Accueil</a> › <span>${e(app.nom)}</span></nav>
     <article class="application">
@@ -147,29 +150,37 @@ export function pageApplication({ site, app, apps }) {
         <span class="application__emoji" aria-hidden="true">${e(app.emoji)}</span>
         <div>
           <p class="application__categorie">${e(app.categorie)}</p>
-          <h1>Code de parrainage ${e(app.nom)}</h1>
+          <h1>${e(titre)}</h1>
           <p class="application__description">${e(app.description)}</p>
           <p><a class="lien-externe" href="${e(app.siteWeb)}" rel="noopener" target="_blank">${e(nomDomaine(app.siteWeb))} ↗</a></p>
         </div>
       </header>
 
       <section class="code" aria-labelledby="titre-code">
-        <h2 id="titre-code">Mon code de parrainage</h2>
+        ${
+          app.code
+            ? `<h2 id="titre-code">Mon code de parrainage</h2>
         <div class="code__bloc">
           <code class="code__valeur" id="code-parrainage">${e(app.code)}</code>
           <button class="bouton" type="button" data-copier="${e(app.code)}">Copier le code</button>
-        </div>
+        </div>`
+            : `<h2 id="titre-code">Mon lien de parrainage</h2>
+        <p class="code__explication">Pas de code à saisir : l'avantage est appliqué automatiquement en passant par ce lien.</p>`
+        }
         ${
-          app.lienInscription
+          app.lienParrainage
             ? `<div class="cta">
-          <a class="bouton bouton--grand" href="${e(app.lienInscription)}" rel="noopener" target="_blank">${e(app.libelleInscription || `Ouvrir un compte ${app.nom}`)} <span aria-hidden="true">↗</span></a>
-          <p class="cta__aide">Pensez à saisir le code <strong>${e(app.code)}</strong> pendant l'inscription.</p>
+          <a class="bouton bouton--grand" href="${e(app.lienParrainage)}" rel="noopener" target="_blank">${e(app.libelleParrainage || (app.code ? "Utiliser mon lien de parrainage" : `Profiter de l'offre ${app.nom}`))} <span aria-hidden="true">↗</span></a>
+          ${app.code ? `<p class="cta__aide">Le code <strong>${e(app.code)}</strong> est pré-rempli en passant par ce lien.</p>` : `<button class="bouton bouton--secondaire" type="button" data-copier="${e(app.lienParrainage)}">Copier le lien</button>`}
         </div>`
             : ""
         }
         ${
-          app.lienParrainage
-            ? `<p class="code__lien">Ou passez directement par mon lien de parrainage : <a class="bouton bouton--secondaire" href="${e(app.lienParrainage)}" rel="noopener" target="_blank">Ouvrir le lien ↗</a></p>`
+          app.lienInscription
+            ? `<div class="cta">
+          <a class="bouton ${app.lienParrainage ? "bouton--secondaire" : "bouton--grand"}" href="${e(app.lienInscription)}" rel="noopener" target="_blank">${e(app.libelleInscription || `Ouvrir un compte ${app.nom}`)} <span aria-hidden="true">↗</span></a>
+          ${app.code ? `<p class="cta__aide">Pensez à saisir le code <strong>${e(app.code)}</strong> pendant l'inscription.</p>` : ""}
+        </div>`
             : ""
         }
         ${app.misAJour ? `<p class="code__maj">Vérifié le ${e(dateFr(app.misAJour))}</p>` : ""}
@@ -216,7 +227,7 @@ export function pageApplication({ site, app, apps }) {
     </section>`
         : ""
     }`;
-  return gabarit({ site, titre: `Code de parrainage ${app.nom}`, description, contenu, prefixe, couleur: app.couleur, chemin: `${app.slug}/` });
+  return gabarit({ site, titre, description, contenu, prefixe, couleur: app.couleur, chemin: `${app.slug}/` });
 }
 
 export function page404({ site }) {

@@ -15,7 +15,7 @@ const dossierAssets = path.join(racine, "assets");
 const dossierSortie = path.join(racine, "dist");
 const modeVerification = process.argv.includes("--check");
 
-const CHAMPS_OBLIGATOIRES = ["slug", "nom", "categorie", "siteWeb", "code", "avantagesFilleul", "etapes"];
+const CHAMPS_OBLIGATOIRES = ["slug", "nom", "categorie", "siteWeb", "avantagesFilleul", "etapes"];
 const CHAMPS_LISTES = ["avantagesFilleul", "avantagesParrain", "etapes", "conditions"];
 
 function valider(app, fichier) {
@@ -24,6 +24,9 @@ function valider(app, fichier) {
     if (app[champ] === undefined || app[champ] === null || app[champ] === "") {
       erreurs.push(`champ obligatoire manquant : "${champ}"`);
     }
+  }
+  if (!app.code && !app.lienParrainage) {
+    erreurs.push(`il faut au moins un "code" ou un "lienParrainage"`);
   }
   for (const champ of CHAMPS_LISTES) {
     if (app[champ] !== undefined && !Array.isArray(app[champ])) {
@@ -80,6 +83,7 @@ async function chargerApplications() {
       conditions: [],
       emoji: "🎁",
       couleur: "#4f46e5",
+      code: null,
       lienParrainage: null,
       lienInscription: null,
       applications: {},

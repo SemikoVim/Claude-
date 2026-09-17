@@ -5,7 +5,7 @@ document.querySelectorAll("[data-copier]").forEach((bouton) => {
     const code = bouton.dataset.copier;
     try {
       await navigator.clipboard.writeText(code);
-      bouton.textContent = "Code copié ✓";
+      bouton.textContent = code.startsWith("http") ? "Lien copié ✓" : "Code copié ✓";
     } catch {
       // Repli pour les navigateurs sans API presse-papiers : on sélectionne le code.
       const cible = document.getElementById("code-parrainage");
