@@ -46,7 +46,7 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 
 ## Personnaliser le site
 
-Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`.
+Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`. Le champ `urlBase` doit contenir l'adresse publique du site (utilisée pour la page 404 et les balises de partage) : à mettre à jour si le dépôt est renommé ou si un nom de domaine personnalisé est utilisé.
 
 - `assets/style.css` : apparence (thèmes clair et sombre automatiques).
 - `assets/script.js` : bouton « Copier le code ».

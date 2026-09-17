@@ -37,8 +37,10 @@ function nomDomaine(url) {
 }
 
 // `prefixe` est le chemin relatif vers la racine du site ("" à la racine, "../" dans une sous-page).
-function gabarit({ site, titre, description, contenu, prefixe = "", couleur }) {
+function gabarit({ site, titre, description, contenu, prefixe = "", couleur, chemin = "" }) {
   const titreComplet = titre ? `${titre} · ${site.titre}` : site.titre;
+  const urlBase = (site.urlBase || "").replace(/\/?$/, "/");
+  const urlPage = site.urlBase ? urlBase + chemin : "";
   return `<!doctype html>
 <html lang="${e(site.langue || "fr")}">
 <head>
@@ -49,6 +51,7 @@ function gabarit({ site, titre, description, contenu, prefixe = "", couleur }) {
   <meta property="og:title" content="${e(titreComplet)}">
   <meta property="og:description" content="${e(description)}">
   <meta property="og:type" content="website">
+  ${urlPage ? `<link rel="canonical" href="${e(urlPage)}">\n  <meta property="og:url" content="${e(urlPage)}">` : ""}
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎁%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="${prefixe}assets/style.css">
@@ -130,7 +133,7 @@ export function pageAccueil({ site, apps }) {
           : `<p class="vide">Aucune application pour le moment.</p>`
       }
     </section>`;
-  return gabarit({ site, description: site.description, contenu });
+  return gabarit({ site, description: site.description, contenu, chemin: "" });
 }
 
 export function pageApplication({ site, app, apps }) {
@@ -213,15 +216,16 @@ export function pageApplication({ site, app, apps }) {
     </section>`
         : ""
     }`;
-  return gabarit({ site, titre: `Code de parrainage ${app.nom}`, description, contenu, prefixe, couleur: app.couleur });
+  return gabarit({ site, titre: `Code de parrainage ${app.nom}`, description, contenu, prefixe, couleur: app.couleur, chemin: `${app.slug}/` });
 }
 
 export function page404({ site }) {
+  const racine = site.urlBase ? site.urlBase.replace(/\/?$/, "/") : "/";
   const contenu = `
     <section class="heros">
       <h1>Page introuvable</h1>
       <p class="heros__intro">Cette page n'existe pas ou a été déplacée.</p>
-      <p><a class="bouton" href="/">Retour à l'accueil</a></p>
+      <p><a class="bouton" href="${e(racine)}">Retour à l'accueil</a></p>
     </section>`;
-  return gabarit({ site, titre: "Page introuvable", description: site.description, contenu });
+  return gabarit({ site, titre: "Page introuvable", description: site.description, contenu, prefixe: racine });
 }
