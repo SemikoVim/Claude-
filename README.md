@@ -46,7 +46,7 @@ La page d'accueil liste automatiquement toutes les applications, classées par o
 
 ## Personnaliser le site
 
-Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`. Le champ `urlBase` doit contenir l'adresse publique du site (utilisée pour la page 404 et les balises de partage) : à mettre à jour si le dépôt est renommé ou si un nom de domaine personnalisé est utilisé.
+Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`. Le champ `urlBase` doit contenir l'adresse publique du site (utilisée pour la page 404 et les balises de partage). Le champ `domaine` contient le nom de domaine personnalisé : il génère le fichier `CNAME` dans le site publié. Laissez-le vide si le site est servi sur `<utilisateur>.github.io/<dépôt>/`.
 
 - `assets/style.css` : apparence (thèmes clair et sombre automatiques).
 - `assets/script.js` : bouton « Copier le code ».
@@ -57,6 +57,20 @@ Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient 
 ## Publication
 
 Le site est prêt pour [GitHub Pages](https://pages.github.com/) : le workflow `.github/workflows/deploy.yml` génère et publie `dist/` à chaque push sur `main`. Pour l'activer, allez dans **Settings → Pages** du dépôt et choisissez **GitHub Actions** comme source.
+
+### Nom de domaine personnalisé
+
+Le site est servi sur **https://parrainage.online/**. Le domaine est géré chez OVHcloud et pointe vers GitHub Pages :
+
+| Type | Sous-domaine | Cible |
+|---|---|---|
+| A | (vide) | 185.199.108.153 |
+| A | (vide) | 185.199.109.153 |
+| A | (vide) | 185.199.110.153 |
+| A | (vide) | 185.199.111.153 |
+| CNAME | www | semikovim.github.io. |
+
+Le domaine est déclaré dans le dépôt (Settings → Pages → Custom domain) avec « Enforce HTTPS » activé.
 
 Le dossier `dist/` généré est un site statique classique : il peut aussi être hébergé sur Netlify, Vercel, Cloudflare Pages ou n'importe quel hébergeur de fichiers.
 

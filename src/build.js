@@ -120,6 +120,8 @@ async function construire() {
     await writeFile(path.join(dossier, "index.html"), pageApplication({ site, app, apps }));
   }
   await writeFile(path.join(dossierSortie, ".nojekyll"), "");
+  // Nom de domaine personnalisé : fichier CNAME attendu par GitHub Pages.
+  if (site.domaine) await writeFile(path.join(dossierSortie, "CNAME"), `${site.domaine}\n`);
   console.log(`✓ Site généré dans dist/ (${apps.length + 2} pages)`);
 }
 
