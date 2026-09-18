@@ -56,7 +56,7 @@ Sources des logos actuels : Coinbase et Crypto.com viennent de [web3icons](https
 
 ## Personnaliser le site
 
-Le titre, le slogan, le texte d'introduction et le nom de l'auteur se modifient dans `site.config.json`. Le champ `urlBase` doit contenir l'adresse publique du site (utilisée pour la page 404 et les balises de partage). Le champ `domaine` contient le nom de domaine personnalisé : il génère le fichier `CNAME` dans le site publié. Laissez-le vide si le site est servi sur `<utilisateur>.github.io/<dépôt>/`.
+Le titre, le titre d'accueil (`titreAccueil` + `titreAccueilAccent`, la partie mise en couleur), le slogan, l'application mise en avant dans le bandeau (`applicationVedette`, un slug) et le nom de l'auteur se modifient dans `site.config.json`. Le champ `urlBase` doit contenir l'adresse publique du site (utilisée pour la page 404 et les balises de partage). Le champ `domaine` contient le nom de domaine personnalisé : il génère le fichier `CNAME` dans le site publié. Laissez-le vide si le site est servi sur `<utilisateur>.github.io/<dépôt>/`.
 
 - `assets/style.css` : apparence (thèmes clair et sombre automatiques).
 - `assets/script.js` : bouton « Copier le code ».

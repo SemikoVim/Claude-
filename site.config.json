@@ -1,11 +1,12 @@
 {
   "titre": "Parrainage.online",
-  "slogan": "Des primes de bienvenue, des bonus et des mois offerts, pour tout le monde plutôt que pour mes seuls proches.",
+  "slogan": "Primes de bienvenue, bonus et mois offerts : plutôt que de les réserver à mes proches, je les partage ici. Choisissez un service, copiez le code, profitez-en.",
   "auteur": "",
   "langue": "fr",
   "description": "Codes et liens de parrainage Fortuneo, Crédit Agricole, Trade Republic, Coinbase, Crypto.com, Spotify : les avantages pour le filleul, la marche à suivre et les conditions, vérifiés régulièrement.",
-  "introduction": "J'utilise de nombreuses applications et services qui offrent des avantages lorsqu'on parraine quelqu'un. Le filleul y gagne aussi : prime de bienvenue, réduction, mois offert... Plutôt que de réserver ces avantages à mon entourage, je les partage ici publiquement. Choisissez une application ci-dessous pour découvrir le code et la marche à suivre.",
   "urlBase": "https://parrainage.online/",
   "domaine": "parrainage.online",
-  "titreAccueil": "Codes et liens de parrainage à partager"
+  "titreAccueil": "Des codes de parrainage",
+  "titreAccueilAccent": "pour tout le monde",
+  "applicationVedette": "fortuneo"
 }
