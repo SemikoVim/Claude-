@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CV – Vincent Monchecourt</title>
+<link rel="stylesheet" href="fonts/inter.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1b2540;
+    --navy-soft: #2a3756;
+    --accent: #3d7fc9;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #dfe4ec;
+    --side: #f4f6fa;
+  }
+  html, body { width: 210mm; height: 297mm; background: #fff; }
+  body {
+    font-family: 'Inter', 'Liberation Sans', 'DejaVu Sans', Arial, sans-serif;
+    color: var(--ink);
+    font-size: 9.3pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 210mm; height: 297mm; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
+
+  /* ---------- En-tête ---------- */
+  header {
+    background: var(--navy); color: #fff;
+    padding: 11mm 12mm 9mm;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm;
+    position: relative;
+  }
+  header::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.6mm;
+    background: linear-gradient(90deg, var(--accent) 0 66mm, var(--navy-soft) 66mm 100%);
+  }
+  h1 { font-size: 24pt; font-weight: 800; letter-spacing: -0.4pt; line-height: 1.05; }
+  h1 span { font-weight: 400; }
+  .role { margin-top: 2.6mm; font-size: 11.5pt; font-weight: 600; color: #fff; }
+  .subrole { margin-top: 0.6mm; font-size: 9.4pt; font-weight: 400; color: #b9c9e3; }
+  .contact { text-align: right; font-size: 8.6pt; line-height: 1.75; color: #dbe3f0; white-space: nowrap; }
+  .contact div { display: flex; justify-content: flex-end; align-items: center; gap: 2.2mm; }
+  .contact svg { width: 3.2mm; height: 3.2mm; fill: none; stroke: #8fb4e6; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* ---------- Corps ---------- */
+  .body { display: grid; grid-template-columns: 66mm 1fr; min-height: 0; }
+  aside { background: var(--side); padding: 8mm 6mm 8mm 12mm; border-right: 1px solid var(--line); font-size: 8.8pt; line-height: 1.38; }
+  main  { padding: 8mm 12mm 8mm 8mm; }
+
+  h2 {
+    font-size: 8.2pt; text-transform: uppercase; letter-spacing: 1.6pt;
+    color: var(--navy); font-weight: 700;
+    padding-bottom: 1.4mm; border-bottom: 2px solid var(--navy); margin-bottom: 3mm;
+  }
+  section + section { margin-top: 5.2mm; }
+
+  /* Sidebar */
+  aside ul { list-style: none; }
+  aside li { position: relative; padding-left: 3.8mm; margin-bottom: 0.9mm; }
+  aside li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.3mm; }
+  .chip { background: #fff; border: 1px solid var(--line); border-radius: 1.2mm; padding: 0.6mm 2mm; font-size: 8pt; font-weight: 500; color: var(--navy); }
+  .chip.strong { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .sub { font-size: 7.8pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7pt; color: var(--muted); margin: 2.6mm 0 1.1mm; }
+  .lang { margin-bottom: 1.6mm; }
+  .lang b { display: block; color: var(--navy); }
+  .lang span { color: var(--muted); font-size: 8.2pt; }
+  .note { color: var(--muted); font-size: 8.2pt; margin-top: 0.6mm; }
+  .edu { margin-bottom: 2.2mm; }
+  .edu .y { font-weight: 700; color: var(--accent); font-size: 8.4pt; }
+  .edu .t { font-weight: 600; color: var(--navy); }
+  .edu .d { color: var(--muted); font-size: 8.2pt; }
+
+  /* Main */
+  .profile { font-size: 9.4pt; line-height: 1.5; color: #374151; }
+  .job { position: relative; padding-left: 6.5mm; padding-bottom: 4.4mm; }
+  .job::before { content: ""; position: absolute; left: 1.35mm; top: 2.2mm; bottom: -1mm; width: 1px; background: var(--line); }
+  .job:last-child::before { display: none; }
+  .job::after { content: ""; position: absolute; left: 0; top: 1.4mm; width: 2.9mm; height: 2.9mm; border-radius: 50%; background: #fff; border: 2px solid var(--accent); }
+  .job.primary::after { background: var(--accent); }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .job-title { font-weight: 700; font-size: 10pt; color: var(--navy); }
+  .job-dates { font-weight: 600; font-size: 8.6pt; color: var(--accent); white-space: nowrap; }
+  .job-meta { color: var(--muted); font-size: 8.8pt; margin-top: 0.4mm; }
+  .job-meta b { color: var(--ink); font-weight: 600; }
+  .job ul { list-style: none; margin-top: 1.5mm; }
+  .job li { position: relative; padding-left: 3.6mm; margin-bottom: 0.8mm; }
+  .job li::before { content: ""; position: absolute; left: 0; top: 1.7mm; width: 1.6mm; height: 1.6mm; border-radius: 0.3mm; background: var(--accent); opacity: .75; }
+  .job.compact { padding-bottom: 3.2mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <h1>Vincent <span>MONCHECOURT</span></h1>
+      <div class="role">Coordinateur Production &amp; Supply Chain</div>
+      <div class="subrole">Industrie aéronautique · Programmes Airbus A350 / A330</div>
+    </div>
+    <div class="contact">
+      <div><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg>06 62 13 80 97</div>
+      <div><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>monchecourt.v@gmail.com</div>
+      <div><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>27 chemin de Bouconne, apt G36 · 31700 Mondonville</div>
+      <div><svg viewBox="0 0 24 24"><path d="M5 17H3v-5l2-5h9l4 5h3v5h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Permis B · Véhicule personnel</div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <aside>
+      <section>
+        <h2>Compétences clés</h2>
+        <ul>
+          <li>Coordination de production en Flight Line (Airbus A350)</li>
+          <li>Supply chain cabine et logistique Delivery Center</li>
+          <li>Gestion des manquants et transports en flux urgent</li>
+          <li>Planification de servitude selon les besoins FAL</li>
+          <li>Suivi des stocks, échanges standards, retours FAL</li>
+          <li>Amélioration continue et encadrement d'équipe</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outils &amp; logiciels</h2>
+        <div class="chips">
+          <span class="chip strong">SAP (PGI / ARP)</span>
+          <span class="chip strong">ACPNG</span>
+          <span class="chip strong">SSAM</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Word</span>
+          <span class="chip">Outlook</span>
+          <span class="chip">Google Workspace</span>
+        </div>
+        <div class="sub">Informatique</div>
+        <ul>
+          <li>Assemblage, configuration et maintenance de PC (matériel et logiciel)</li>
+          <li>Diagnostic et réparation de pannes, environnement Windows</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Langues</h2>
+        <div class="lang"><b>Anglais</b><span>Courant &amp; technique (niveau intermédiaire)</span></div>
+        <div class="lang"><b>Espagnol</b><span>Niveau scolaire</span></div>
+        <div class="note">Séjours linguistiques en Angleterre et en Espagne</div>
+      </section>
+
+      <section>
+        <h2>Formation</h2>
+        <div class="edu">
+          <div class="y">2007</div>
+          <div class="t">CACES 1, 2, 3</div>
+          <div class="d">Conduite d'engins de manutention</div>
+        </div>
+        <div class="edu">
+          <div class="y">2004</div>
+          <div class="t">Niveau Bac Scientifique</div>
+          <div class="d">Spécialité Physique-Chimie · Lycée Louis Liard, Falaise (14)</div>
+        </div>
+      </section>
+    </aside>
+
+    <main>
+      <section>
+        <h2>Profil</h2>
+        <p class="profile">
+          17 ans d'expérience dans l'industrie aéronautique chez Daher, au service des programmes
+          Airbus A350 et A330 : coordination de production en Flight Line, logistique et supply chain
+          cabine au Delivery Center. Habitué au travail en flux tendu, à la gestion des manquants et à la
+          coordination avec les supports métiers pour sécuriser les livraisons clients.
+        </p>
+      </section>
+
+      <section>
+        <h2>Expériences professionnelles</h2>
+
+        <div class="job primary">
+          <div class="job-head">
+            <div class="job-title">Coordinateur Supply Chain Cabine &amp; Logistique</div>
+            <div class="job-dates">2023 – 2024</div>
+          </div>
+          <div class="job-meta"><b>Daher</b> · Delivery Center Airbus A350 / A330 · Colomiers (31)</div>
+          <ul>
+            <li>Suivi des derniers manquants avant transfert des avions au client</li>
+            <li>Proposition de solutions de prélèvements pour sécuriser les délais</li>
+            <li>Organisation de transports en flux urgent</li>
+            <li>Collaboration avec les supports métiers pour garantir la disponibilité des bonnes références au bon moment, afin de sécuriser les transferts vers les clients</li>
+            <li>Démarche d'amélioration continue</li>
+          </ul>
+        </div>
+
+        <div class="job primary">
+          <div class="job-head">
+            <div class="job-title">Coordinateur de production</div>
+            <div class="job-dates">2014 – 2023</div>
+          </div>
+          <div class="job-meta"><b>Daher</b> · Flight Line Airbus A350 · Colomiers (31)</div>
+          <ul>
+            <li>Coordination de la production sur les postes Flight Line P15, P19/22, P20 et WP du programme Airbus A350</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div class="job-title">Chef de groupe – Expédition, Réception et Magasin TA3</div>
+            <div class="job-dates">2011 – 2014</div>
+          </div>
+          <div class="job-meta"><b>Daher</b> · Cornebarrieu (31)</div>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div class="job-title">Agent logistique – Magasin TA3 (EYY, M86)</div>
+            <div class="job-dates">2009 – 2011</div>
+          </div>
+          <div class="job-meta"><b>Daher-Socata</b> · Saint-Martin-du-Touch (31)</div>
+          <ul>
+            <li>Réception et servitude des équipements de vol pour les avions Airbus</li>
+            <li>Mise en place des plannings de servitude en fonction des besoins FAL</li>
+            <li>Gestion des manquants, échanges standards, suivi des stocks et retours FAL sous SAP et Excel</li>
+          </ul>
+        </div>
+
+        <div class="job compact">
+          <div class="job-head">
+            <div class="job-title">Cariste, préparateur de commandes</div>
+            <div class="job-dates">2007 – 2009</div>
+          </div>
+          <div class="job-meta"><b>Daher</b> · Caen (14) · Servitude et livraison d'éléments de cabine pour la chaîne d'assemblage Renault Trucks</div>
+        </div>
+
+        <div class="job compact">
+          <div class="job-head">
+            <div class="job-title">Opérateur sur presse</div>
+            <div class="job-dates">2006 – 2007</div>
+          </div>
+          <div class="job-meta"><b>MPO</b> · Moult (14) · Industrie métallurgique</div>
+        </div>
+
+        <div class="job compact">
+          <div class="job-head">
+            <div class="job-title">Missions d'intérim</div>
+            <div class="job-dates">2005 – 2006</div>
+          </div>
+          <div class="job-meta">Industries agroalimentaire et plasturgie</div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</div>
+</body>
+</html>
