@@ -1,5 +1,7 @@
 # Mes codes de parrainage
 
+> Pour reprendre le projet (contexte complet, applications, DNS, déploiement, tâches restantes), lire d'abord [REPRISE.md](REPRISE.md).
+
 Site statique, en français, pour partager publiquement les codes de parrainage des applications et services que j'utilise. Chaque application a sa propre page qui présente le code, les avantages pour le filleul et la marche à suivre.
 
 Aucune dépendance à installer : seul [Node.js](https://nodejs.org) (version 18 ou plus) est nécessaire.
